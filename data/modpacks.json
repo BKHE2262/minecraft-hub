@@ -1,0 +1,22 @@
+[
+  {
+    "id": "rlcraft",
+    "title": "RLCraft 生存整合包",
+    "mcVersion": "1.12.2",
+    "description": "极具挑战性的硬核生存整合包，包含大量新怪物、探索要素与副本。",
+    "downloadUrl": "https://wwx.lanzoui.com/example1",
+    "passcode": "6666",
+    "tags": ["硬核", "冒险", "RPG"],
+    "screenshot": "../assets/screenshots/rlcraft.jpg"
+  },
+  {
+    "id": "tech-pack",
+    "title": "工业时代 2 + 实用模组组包",
+    "mcVersion": "1.20.1",
+    "description": "以科技自动化为核心的轻量整合包，上手简单，适合朋友联机。",
+    "downloadUrl": "https://wwx.lanzoui.com/example2",
+    "passcode": "8888",
+    "tags": ["科技", "自动化", "联机推荐"],
+    "screenshot": "../assets/screenshots/tech.jpg"
+  }
+]
