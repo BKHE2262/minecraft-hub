@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>整合包下载 - Minecraft Hub</title>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-hover: #1b5e20;
+      --bg-color: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-main: #2c3e50;
+      --text-sub: #7f8c8d;
+      --border-color: #e0e0e0;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+    
+    header { background: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; }
+    .nav-container { max-width: 1100px; margin: 0 auto; padding: 0.8rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.25rem; font-weight: bold; color: var(--primary); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; }
+    .nav-links a.active { color: var(--primary); font-weight: bold; }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .page-header { background: var(--card-bg); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border-color); margin-bottom: 2rem; }
+    .page-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    
+    /* 筛选标签 */
+    .filter-bar { display: flex; gap: 0.8rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .filter-btn { padding: 0.4rem 1rem; border: 1px solid var(--border-color); background: var(--card-bg); border-radius: 20px; cursor: pointer; font-size: 0.9rem; }
+    .filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+    .card-img { width: 100%; height: 160px; object-fit: cover; background: #eaeff1; }
+    .card-body { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-title { font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .card-meta { font-size: 0.8rem; color: var(--text-sub); margin-bottom: 0.8rem; display: flex; gap: 0.8rem; }
+    .card-desc { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.2rem; flex-grow: 1; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; }
+    
+    .btn { display: inline-block; padding: 0.4rem 1rem; background: var(--primary); color: #fff; border-radius: 6px; text-decoration: none; font-size: 0.88rem; }
+    .btn:hover { background: var(--primary-hover); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">🎮 Minecraft Hub</a>
+      <nav class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="packs.html">整合包</a>
+        <a href="shaderpacks.html">MOD/光影</a>
+        <a href="worlds.html">地图存档</a>
+      </nav>
+    </div>
+  </header>
+
+<!-- 通用通知弹窗组件 -->
+<div id="modalOverlay" class="modal-overlay">
+  <div class="modal-content">
+    <h3>提示信息</h3>
+    <p id="modalMessage">资源暂未开放</p>
+    <button class="btn" onclick="closeNotice()">我知道了</button>
+  </div>
+</div>

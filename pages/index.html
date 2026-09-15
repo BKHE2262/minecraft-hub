@@ -4,27 +4,362 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minecraft 资源下载站</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-hover: #1b5e20;
+      --bg-color: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-main: #2c3e50;
+      --text-sub: #7f8c8d;
+      --border-color: #e0e0e0;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* 顶部导航 */
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* [图片占位] Logo 图片尺寸标准 */
+    .logo img {
+      height: 28px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* 汉堡菜单开关 (仅移动端) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    /* 主内容区 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* 头部 Banner 区 */
+    .hero {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .quick-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.2rem 0;
+      flex-wrap: wrap;
+    }
+
+    /* 扁平化按钮样式 */
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background-color: var(--primary);
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    .hero p {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+    }
+
+    /* [图片占位] 顶部 Banner 图片 */
+    .hero-banner-img {
+      width: 100%;
+      max-height: 240px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-top: 1.5rem;
+    }
+
+    /* 卡片网格布局 */
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* 扁平化展示卡片 */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--primary);
+    }
+
+    /* [图片占位] 资源卡片封面图容器 */
+    .card-img {
+      width: 100%;
+      height: 160px;
+      background-color: #eaeff1;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-desc {
+      color: var(--text-sub);
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      background-color: #e8f5e9;
+      color: var(--primary);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* 响应式导航设计 (移动端) */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none; /* 默认隐藏 */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex; /* 点击菜单后显示 */
+      }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- 头部导航栏 -->
   <header>
-    <div class="logo">🎮 Minecraft Hub</div>
-    <nav>
-      <a href="index.html">首页</a>
-      <a href="pages/versions.html">客户端</a>
-      <a href="pages/modpacks.html">整合包</a>
-      <a href="pages/mods.html">MOD</a>
-      <a href="pages/worlds.html">地图存档</a>
-      <a href="pages/about.html">关于</a>
-    </nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <!-- [图片存放位置 1] 替换 src 路径为你的 Logo 图片，例如 images/logo.png -->
+        <!-- <img src="images/logo.png" alt="Logo"> -->
+        <span>🎮 Minecraft Hub</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="切换菜单" onclick="toggleMenu()">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">首页</a>
+        <a href="https://bkhe.lanzout.com/ioHoq48me0hg" target="_blank">PCL 启动器</a>
+        <a href="https://bkhe.lanzout.com/iq8d248megrc" target="_blank">整合包直链</a>
+        <a href="null.html">MOD 专区</a>
+        <a href="worlds.html">地图存档</a>
+        <a href="about.html">关于</a>
+      </nav>
+    </div>
   </header>
 
   <main class="container">
-    <div style="text-align: center; padding: 3rem 0;">
+
+    <!-- 首页 Banner 与主要链接区 -->
+    <section class="hero">
       <h1>我的世界开荒与整合包分享</h1>
-      <p style="color: var(--text-sub);">点击上方导航栏，快速获取版本客户端、实用 MOD 及精选存档直链。</p>
-    </div>
+      
+      <!-- 标题下方放置的直链按钮组 -->
+      <div class="quick-links">
+        <a href="https://bkhe.lanzout.com/ioHoq48me0hg" target="_blank" class="btn">🚀 PCL 启动器下载</a>
+        <a href="https://bkhe.lanzout.com/iq8d248megrc" target="_blank" class="btn btn-outline">📦 精选整合包直链</a>
+      </div>
+
+      <p>点击导航栏或链接，快速获取最新版本客户端、实用 MOD 及精选存档直链。</p>
+
+      <!-- [图片存放位置 2] 首页 Banner 大图，例如 images/banner.jpg -->
+      <!-- <img src="images/banner.jpg" alt="Minecraft Banner" class="hero-banner-img"> -->
+    </section>
+
+    <!-- 精选资源多卡片展示区 -->
+    <section>
+      <div class="section-title">
+        <h2>🔥 热门推荐</h2>
+      </div>
+
+      <div class="grid">
+
+        <!-- 卡片 1 -->
+        <article class="card">
+          <!-- [图片存放位置 3] 整合包/MOD 封面图片，例如 images/packs/pack-1.jpg -->
+          <img src="../images/1714969488_7949_MMvL.jpg@480x300.jpg" alt="整合包封面" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">生存开荒整合包 v1.20.1</h3>
+            <p class="card-desc">内置基础优化、高清材质包以及常用地图辅助 MOD，适合低配开荒使用。</p>
+            <div class="card-footer">
+              <span class="tag">整合包</span>
+              <a href="https://bkhe.lanzout.com/iq8d248megrc" target="_blank" class="btn" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">下载</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 卡片 2 -->
+        <article class="card">
+          <!-- [图片存放位置 4] 封面图片，例如 images/mods/optifine.jpg -->
+          <img src="../images/default.webp" alt="MOD 封面" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">光影组件</h3>
+            <p class="card-desc">精选 Sodium / Iris 光影，大幅提升画质表现。</p>
+            <div class="card-footer">
+              <span class="tag">MOD 推荐</span>
+              <a href="shaderpacks.html" class="btn btn-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">查看</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 卡片 3 -->
+        <article class="card">
+          <!-- [图片存放位置 5] 封面图片，例如 images/maps/world-1.jpg -->
+          <img src="../images/2026-09-16_002946_968.jpg" alt="地图封面" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">大型建筑世界存档</h3>
+            <p class="card-desc">包含完整主城建筑与自动化红石机械，支持单人或多人联机共同体验。</p>
+            <div class="card-footer">
+              <span class="tag">地图存档</span>
+              <a href="worlds.html" class="btn btn-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">查看</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
   </main>
+
+  <!-- JS: 处理移动端汉堡菜单切换 -->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>

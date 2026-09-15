@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地图存档 - Minecraft Hub</title>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-hover: #1b5e20;
+      --bg-color: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-main: #2c3e50;
+      --text-sub: #7f8c8d;
+      --border-color: #e0e0e0;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+    
+    header { background: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; }
+    .nav-container { max-width: 1100px; margin: 0 auto; padding: 0.8rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.25rem; font-weight: bold; color: var(--primary); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; }
+    .nav-links a.active { color: var(--primary); font-weight: bold; }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .page-header { background: var(--card-bg); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border-color); margin-bottom: 2rem; }
+    .page-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+    .card-img { width: 100%; height: 160px; object-fit: cover; background: #eaeff1; }
+    .card-body { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-title { font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .card-desc { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.2rem; flex-grow: 1; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; }
+    
+    .btn { display: inline-block; padding: 0.4rem 1rem; background: var(--primary); color: #fff; border-radius: 6px; text-decoration: none; font-size: 0.88rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">🎮 Minecraft Hub</a>
+      <nav class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="packs.html">整合包</a>
+        <a href="shaderpacks.html">MOD/光影</a>
+        <a href="worlds.html" class="active">地图存档</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h1>🏰 大型建筑与世界存档</h1>
+      <p style="color: var(--text-sub);">汇集精美的主城建筑、大型红石工程及各类冒险生存地图存档。</p>
+    </div>
+
+    <div class="grid">
+      <!-- 存档 1 -->
+      <article class="card">
+        <!-- [图片占位] 资源封面图：images/worlds/city.jpg -->
+        <img src="https://via.placeholder.com/400x200?text=Mega+City" alt="大型主城" class="card-img">
+        <div class="card-body">
+          <h3 class="card-title">哥特风格宏伟主城存档</h3>
+          <p class="card-desc">历时 8 个月手工打造的浩瀚大教堂与城堡群体，带有完整的地下连通交通网。</p>
+          <div class="card-footer">
+            <span style="font-size: 0.75rem; background: #f3e5f5; color: #8e24aa; padding: 0.2rem 0.5rem; border-radius: 4px;">大型建筑</span>
+            <a href="null.html" class="btn">存档下载</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 存档 2 -->
+      <article class="card">
+        <!-- [图片占位] 资源封面图：images/worlds/redstone.jpg -->
+        <img src="https://via.placeholder.com/400x200?text=Redstone+World" alt="红石工程" class="card-img">
+        <div class="card-body">
+          <h3 class="card-title">自动化红石科技生存基地</h3>
+          <p class="card-desc">包含全自动刷铁机、自动化分类仓储系统以及巨型刷怪塔的后期生存存档。</p>
+          <div class="card-footer">
+            <span style="font-size: 0.75rem; background: #ffebee; color: #c62828; padding: 0.2rem 0.5rem; border-radius: 4px;">红石工程</span>
+            <a href="null.html" class="btn">存档下载</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

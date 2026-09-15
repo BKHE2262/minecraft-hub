@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我们 - Minecraft Hub</title>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-hover: #1b5e20;
+      --bg-color: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-main: #2c3e50;
+      --text-sub: #7f8c8d;
+      --border-color: #e0e0e0;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Header 导航 */
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a.active, .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* 主内容区 */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    /* 关于页面主卡片 */
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .avatar-wrapper {
+      margin-bottom: 1.5rem;
+    }
+
+    /* [图片占位] 站长/维护者头像（例如：images/avatar.jpg） */
+    .avatar-img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      background-color: #eaeff1;
+    }
+
+    .about-card h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .author-role {
+      display: inline-block;
+      font-size: 0.85rem;
+      background-color: #e8f5e9;
+      color: var(--primary);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-desc {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto 2rem auto;
+    }
+
+    /* 联系信息板块 */
+    .contact-box {
+      background-color: #f9fbf9;
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .contact-label {
+      font-weight: bold;
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+
+    .contact-email {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-email:hover {
+      text-decoration: underline;
+    }
+
+    /* 页脚 */
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--text-sub);
+      font-size: 0.85rem;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 0;
+      }
+      .nav-links.active { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 头部导航栏 -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <!-- [图片占位] 替换 src 路径为 Logo 图片，例如 ../images/logo.png -->
+        <span>🎮 Minecraft Hub</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="切换菜单" onclick="toggleMenu()">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">首页</a>
+        <a href="https://bkhe.lanzout.com/ioHoq48me0hg" target="_blank">PCL 启动器</a>
+        <a href="https://bkhe.lanzout.com/iq8d248megrc" target="_blank">整合包直链</a>
+        <a href="null.html">MOD 专区</a>
+        <a href="worlds.html">地图存档</a>
+        <a href="about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="about-card">
+      <!-- [图片存放位置] 维护者/站长头像图片，如 ../images/avatar.jpg -->
+      <div class="avatar-wrapper">
+        <img src="../images/IMG_20240721_093401.jpg" alt="BLACKHOLE Avatar" class="avatar-img">
+      </div>
+
+      <h1>BLACKHOLE</h1>
+      <div class="author-role">网站维护者 / 管理员</div>
+
+      <p class="about-desc">
+        欢迎来到 Minecraft Hub！本站致力于为《我的世界》玩家提供便捷、优质的开荒客户端、精选整合包、实用 MOD 以及各类建地图存档直链下载。
+      </p>
+
+      <!-- 联系方式 -->
+      <div class="contact-box">
+        <span class="contact-label">📧 常用邮箱：</span>
+        <a href="mailto:2272606718@qq.com" class="contact-email">2272606718@qq.com</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Minecraft Hub. Powered by BLACKHOLE.</p>
+    </footer>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
